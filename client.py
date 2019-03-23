@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import request
+from flask import request as flask_request
 from PIL import Image
 from grpc.beta import implementations
 import tensorflow as tf
@@ -10,11 +10,10 @@ from io import BytesIO
 import os
 
 def post():
-    global request
     server = os.environ['server']
     host, port = server.split(':')
 
-    body_data = BytesIO(request.get_data())
+    body_data = BytesIO(flask_request.get_data())
     origin = Image.open(body_data)
     image = np.array(origin)
     height = image.shape[0]
