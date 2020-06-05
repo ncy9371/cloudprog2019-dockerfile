@@ -2,6 +2,6 @@ FROM tensorflow/tensorflow:1.12.0-py3
 
 COPY	client.py	/client.py
 
-RUN 	pip3 install flask tensorflow-serving-api Pillow numpy grpcio
+RUN 	pip3 install flask tensorflow-serving-api==1.12.0 Pillow numpy grpcio
 
 EXPOSE	80/tcp
